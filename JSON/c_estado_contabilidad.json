@@ -1,0 +1,10 @@
+[
+   {
+      "tipo_c_estcon":"Pagado",
+      "id_c_estcon":"1"
+   },
+   {
+      "tipo_c_estcon":"Pendiente",
+      "id_c_estcon":"2"
+   }
+]

@@ -1,0 +1,8 @@
+[
+  {"nombre_c_rol": "Administrador"},
+  {"nombre_c_rol": "Dueño"},
+  {"nombre_c_rol": "Medico tratante"},
+  {"nombre_c_rol": "Especialista"},
+  {"nombre_c_rol": "Trabajador"},
+  {"nombre_c_rol": "Cliente"}
+]
