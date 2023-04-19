@@ -11,9 +11,8 @@ const mProductoVenta = dbConnection.define<IMProductoVentaM>(
   {
     id_proven: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
     cantidad_proven: {
       type: DataTypes.INTEGER,

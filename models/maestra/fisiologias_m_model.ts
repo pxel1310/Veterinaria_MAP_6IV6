@@ -10,7 +10,6 @@ const mFisiologias = dbConnection.define<IMFisiologiasM>(
   {
     id_fis: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },

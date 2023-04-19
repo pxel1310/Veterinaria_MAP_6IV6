@@ -34,6 +34,7 @@ import usuarioMRoute from "../routes/byTable/maestra/usuario_m_route";
 import vacunaCRoute from "../routes/byTable/catalogo/vacuna_c_route";
 import ventaDRoute from "../routes/byTable/detalle/venta_d_route";
 import veterinariaMRoute from "../routes/byTable/maestra/veterinaria_m_route";
+import { validarApiToken } from "../middlewares";
 
 dotenv.config();
 
@@ -111,47 +112,119 @@ const startServer: () => StartServerProps = () => {
     app.use(apiPaths.token, tokenRouter);
 
     // ByTable
-    app.use(apiPaths.byTable.catalogo.animalProductoC, animalProductoCRoute);
-    app.use(apiPaths.byTable.catalogo.categoriaC, categoriaCRoute);
-    app.use(apiPaths.byTable.catalogo.colorC, colorCRoute);
-    app.use(apiPaths.byTable.catalogo.enfermedadC, enfermedadCRoute);
-    app.use(apiPaths.byTable.catalogo.especieC, especieCRoute);
+    app.use(
+      apiPaths.byTable.catalogo.animalProductoC,
+      [validarApiToken],
+      animalProductoCRoute
+    );
+    app.use(
+      apiPaths.byTable.catalogo.categoriaC,
+      [validarApiToken],
+      categoriaCRoute
+    );
+    app.use(apiPaths.byTable.catalogo.colorC, [validarApiToken], colorCRoute);
+    app.use(
+      apiPaths.byTable.catalogo.enfermedadC,
+      [validarApiToken],
+      enfermedadCRoute
+    );
+    app.use(
+      apiPaths.byTable.catalogo.especieC,
+      [validarApiToken],
+      especieCRoute
+    );
     app.use(
       apiPaths.byTable.catalogo.estadoExpedienteC,
+      [validarApiToken],
       estadoExpedienteCRouter
     );
-    app.use(apiPaths.byTable.catalogo.marcaC, marcaCRoute);
-    app.use(apiPaths.byTable.catalogo.proveedorC, proveedorCRoute);
-    app.use(apiPaths.byTable.catalogo.razaC, razaCRoute);
-    app.use(apiPaths.byTable.catalogo.rolC, rolCRoute);
-    app.use(apiPaths.byTable.catalogo.servicioC, servicioCRoute);
-    app.use(apiPaths.byTable.catalogo.sexoC, sexoCRoute);
-    app.use(apiPaths.byTable.catalogo.vacunaC, vacunaCRoute);
+    app.use(apiPaths.byTable.catalogo.marcaC, [validarApiToken], marcaCRoute);
+    app.use(
+      apiPaths.byTable.catalogo.proveedorC,
+      [validarApiToken],
+      proveedorCRoute
+    );
+    app.use(apiPaths.byTable.catalogo.razaC, [validarApiToken], razaCRoute);
+    app.use(apiPaths.byTable.catalogo.rolC, [validarApiToken], rolCRoute);
+    app.use(
+      apiPaths.byTable.catalogo.servicioC,
+      [validarApiToken],
+      servicioCRoute
+    );
+    app.use(apiPaths.byTable.catalogo.sexoC, [validarApiToken], sexoCRoute);
+    app.use(apiPaths.byTable.catalogo.vacunaC, [validarApiToken], vacunaCRoute);
 
-    app.use(apiPaths.byTable.detalle.clienteD, clienteDRoute);
-    app.use(apiPaths.byTable.detalle.duenoVeterinariaD, duenoVeterinariaDRoute);
-    app.use(apiPaths.byTable.detalle.periodoD, periodoDRoute);
+    app.use(
+      apiPaths.byTable.detalle.clienteD,
+      [validarApiToken],
+      clienteDRoute
+    );
+    app.use(
+      apiPaths.byTable.detalle.duenoVeterinariaD,
+      [validarApiToken],
+      duenoVeterinariaDRoute
+    );
+    app.use(
+      apiPaths.byTable.detalle.periodoD,
+      [validarApiToken],
+      periodoDRoute
+    );
     app.use(
       apiPaths.byTable.detalle.personalVeterinariaD,
+      [validarApiToken],
       personalVeterinariaDRoute
     );
-    app.use(apiPaths.byTable.detalle.ventaD, ventaDRoute);
-    app.use(apiPaths.byTable.maestra.expedienteM, expedienteMRoute);
-    app.use(apiPaths.byTable.maestra.fisiogiasM, fisiologiasMRoute);
-    app.use(apiPaths.byTable.maestra.gastoFijoM, gastoFijoMRoute);
-    app.use(apiPaths.byTable.maestra.loteM, loteMRoute);
-    app.use(apiPaths.byTable.maestra.mascotaM, mascotaMRoute);
-    app.use(apiPaths.byTable.maestra.productoM, productoMRoute);
-    app.use(apiPaths.byTable.maestra.productoVentaM, productoVentaMRoute);
-    app.use(apiPaths.byTable.maestra.usuarioM, usuarioMRoute);
-    app.use(apiPaths.byTable.maestra.veterinariaM, veterinariaMRoute);
+    app.use(apiPaths.byTable.detalle.ventaD, [validarApiToken], ventaDRoute);
+    app.use(
+      apiPaths.byTable.maestra.expedienteM,
+      [validarApiToken],
+      expedienteMRoute
+    );
+    app.use(
+      apiPaths.byTable.maestra.fisiogiasM,
+      [validarApiToken],
+      fisiologiasMRoute
+    );
+    app.use(
+      apiPaths.byTable.maestra.gastoFijoM,
+      [validarApiToken],
+      gastoFijoMRoute
+    );
+    app.use(apiPaths.byTable.maestra.loteM, [validarApiToken], loteMRoute);
+    app.use(
+      apiPaths.byTable.maestra.mascotaM,
+      [validarApiToken],
+      mascotaMRoute
+    );
+    app.use(
+      apiPaths.byTable.maestra.productoM,
+      [validarApiToken],
+      productoMRoute
+    );
+    app.use(
+      apiPaths.byTable.maestra.productoVentaM,
+      [validarApiToken],
+      productoVentaMRoute
+    );
+    app.use(
+      apiPaths.byTable.maestra.usuarioM,
+      [validarApiToken],
+      usuarioMRoute
+    );
+    app.use(
+      apiPaths.byTable.maestra.veterinariaM,
+      [validarApiToken],
+      veterinariaMRoute
+    );
 
     app.use(
       apiPaths.byTable.relacional.expedienteEnfermedadR,
+      [validarApiToken],
       expedienteEnfermedadRRoute
     );
     app.use(
       apiPaths.byTable.relacional.expedienteVacunaR,
+      [validarApiToken],
       expedienteVacunaRRoute
     );
   };

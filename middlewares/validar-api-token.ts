@@ -13,7 +13,7 @@ const validarApiToken = async (
 
   if (!token) {
     return res.status(401).json({
-      msg: "No hay token en la petición",
+      msg: "No API Token dentro del header",
     });
   }
 

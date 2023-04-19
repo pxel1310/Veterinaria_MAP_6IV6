@@ -8,9 +8,8 @@ const dPeriodo = dbConnection.define<IMPeriodoD>(
   {
     id_per: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
     fechaInicio_per: {
       type: DataTypes.DATE,
