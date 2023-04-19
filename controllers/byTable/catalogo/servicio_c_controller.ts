@@ -1,54 +1,100 @@
 import type { Request, Response } from "express";
-
 import type { IServicioC } from "../../../@types/interfaces";
-
 import cServicio from "../../../models/catalogo/servicio_c_model";
-import {
-  handleDeleteRequest,
-  handleErrorHttp,
-  handleGetAllRequest,
-  handleGetRequest,
-  handlePostAllRequest,
-  handlePutRequest,
-} from "../../../util";
+import { handleErrorHttp } from "../../../util";
 
 const getAllServicio = async (req: Request, res: Response) => {
   try {
-    return handleGetAllRequest(req, res, cServicio);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const [total, servicio] = await Promise.all([
+      cServicio.count(),
+      cServicio.findAll(),
+    ]);
+
+    return res.status(200).json({
+      total,
+      servicio,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const getServicio = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleGetRequest(req, res, cServicio);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const servicio = await cServicio.findByPk(id);
+    if (!servicio) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    return res.status(200).json({
+      servicio,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const postServicio = async (req: Request, res: Response) => {
+  const response = req.body as IServicioC | IServicioC[];
   try {
-    return handlePostAllRequest(req, res, cServicio, req.body as IServicioC[]);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    if (Array.isArray(response)) {
+      const servicio = await cServicio.bulkCreate(response);
+      return res.status(200).json({
+        servicio,
+      });
+    } else {
+      const servicio = await cServicio.create(response);
+      return res.status(200).json({
+        servicio,
+      });
+    }
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const putServicio = async (req: Request, res: Response) => {
+  const response = req.body as IServicioC;
+  const { id } = req.params;
+
   try {
-    return handlePutRequest(req, res, cServicio);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const servicio = await cServicio.findByPk(id);
+    if (!servicio) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await servicio.update(response);
+    return res.status(200).json({
+      servicio,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const deleteServicio = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleDeleteRequest(req, res, cServicio);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const servicio = await cServicio.findByPk(id);
+    if (!servicio) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await servicio.destroy();
+    return res.status(200).json({
+      servicio,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 

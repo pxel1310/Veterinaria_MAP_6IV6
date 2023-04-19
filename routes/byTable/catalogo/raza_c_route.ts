@@ -7,12 +7,12 @@ import {
   deleteRaza,
 } from "../../../controllers";
 
-const razaCRouter = Router();
+const razaCRoute = Router();
 
-razaCRouter.get("/", getAllRaza);
-razaCRouter.get("/:id", getRaza);
-razaCRouter.post("/", postRaza);
-razaCRouter.put("/:id", putRaza);
-razaCRouter.delete("/:id", deleteRaza);
+razaCRoute.get("/", getAllRaza);
+razaCRoute.get("/:id", getRaza);
+razaCRoute.post("/", postRaza);
+razaCRoute.put("/:id", putRaza);
+razaCRoute.delete("/:id", deleteRaza);
 
-export { razaCRouter };
+export default razaCRoute;

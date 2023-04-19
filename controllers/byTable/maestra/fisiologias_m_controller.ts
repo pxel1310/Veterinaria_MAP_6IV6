@@ -1,66 +1,107 @@
 import type { Request, Response } from "express";
-
 import type { IFisiologiaM } from "../../../@types/interfaces";
-
 import mFisiologias from "../../../models/maestra/fisiologias_m_model";
-import {
-  handleDeleteRequest,
-  handleErrorHttp,
-  handleGetAllRequest,
-  handleGetRequest,
-  handlePostAllRequest,
-  handlePutRequest,
-} from "../../../util";
+import { handleErrorHttp } from "../../../util";
 
-const getAllFisiologias = async (req: Request, res: Response) => {
+const getAllFisiologia = async (req: Request, res: Response) => {
   try {
-    return handleGetAllRequest(req, res, mFisiologias);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const [total, fisiologia] = await Promise.all([
+      mFisiologias.count(),
+      mFisiologias.findAll(),
+    ]);
+
+    return res.status(200).json({
+      total,
+      fisiologia,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
-const getFisiologias = async (req: Request, res: Response) => {
+const getFisiologia = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleGetRequest(req, res, mFisiologias);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const fisiologia = await mFisiologias.findByPk(id);
+    if (!fisiologia) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    return res.status(200).json({
+      fisiologia,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
-const postFisiologias = async (req: Request, res: Response) => {
+const postFisiologia = async (req: Request, res: Response) => {
+  const response = req.body as IFisiologiaM | IFisiologiaM[];
   try {
-    return handlePostAllRequest(
-      req,
-      res,
-      mFisiologias,
-      req.body as IFisiologiaM[]
-    );
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    if (Array.isArray(response)) {
+      const fisiologia = await mFisiologias.bulkCreate(response);
+      return res.status(200).json({
+        fisiologia,
+      });
+    } else {
+      const fisiologia = await mFisiologias.create(response);
+      return res.status(200).json({
+        fisiologia,
+      });
+    }
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
-const putFisiologias = async (req: Request, res: Response) => {
+const putFisiologia = async (req: Request, res: Response) => {
+  const response = req.body as IFisiologiaM;
+  const { id } = req.params;
+
   try {
-    return handlePutRequest(req, res, mFisiologias);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const fisiologia = await mFisiologias.findByPk(id);
+    if (!fisiologia) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await fisiologia.update(response);
+    return res.status(200).json({
+      fisiologia,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
-const deleteFisiologias = async (req: Request, res: Response) => {
+const deleteFisiologia = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleDeleteRequest(req, res, mFisiologias);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const fisiologia = await mFisiologias.findByPk(id);
+    if (!fisiologia) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await fisiologia.destroy();
+    return res.status(200).json({
+      fisiologia,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 export {
-  getAllFisiologias,
-  getFisiologias,
-  postFisiologias,
-  putFisiologias,
-  deleteFisiologias,
+  getAllFisiologia,
+  getFisiologia,
+  postFisiologia,
+  putFisiologia,
+  deleteFisiologia,
 };

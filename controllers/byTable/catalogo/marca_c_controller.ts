@@ -1,54 +1,100 @@
 import type { Request, Response } from "express";
-
 import type { IMarcaC } from "../../../@types/interfaces";
-
 import cMarca from "../../../models/catalogo/marca_c_model";
-import {
-  handleDeleteRequest,
-  handleErrorHttp,
-  handleGetAllRequest,
-  handleGetRequest,
-  handlePostAllRequest,
-  handlePutRequest,
-} from "../../../util";
+import { handleErrorHttp } from "../../../util";
 
 const getAllMarca = async (req: Request, res: Response) => {
   try {
-    return handleGetAllRequest(req, res, cMarca);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const [total, marca] = await Promise.all([
+      cMarca.count(),
+      cMarca.findAll(),
+    ]);
+
+    return res.status(200).json({
+      total,
+      marca,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const getMarca = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleGetRequest(req, res, cMarca);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const marca = await cMarca.findByPk(id);
+    if (!marca) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    return res.status(200).json({
+      marca,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const postMarca = async (req: Request, res: Response) => {
+  const response = req.body as IMarcaC | IMarcaC[];
   try {
-    return handlePostAllRequest(req, res, cMarca, req.body as IMarcaC[]);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    if (Array.isArray(response)) {
+      const marca = await cMarca.bulkCreate(response);
+      return res.status(200).json({
+        marca,
+      });
+    } else {
+      const marca = await cMarca.create(response);
+      return res.status(200).json({
+        marca,
+      });
+    }
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const putMarca = async (req: Request, res: Response) => {
+  const response = req.body as IMarcaC;
+  const { id } = req.params;
+
   try {
-    return handlePutRequest(req, res, cMarca);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const marca = await cMarca.findByPk(id);
+    if (!marca) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await marca.update(response);
+    return res.status(200).json({
+      marca,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const deleteMarca = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleDeleteRequest(req, res, cMarca);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const marca = await cMarca.findByPk(id);
+    if (!marca) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await marca.destroy();
+    return res.status(200).json({
+      marca,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 

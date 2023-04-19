@@ -7,12 +7,12 @@ import {
   deleteExpedienteVacuna,
 } from "../../../controllers";
 
-const expedienteVacunaRRouter = Router();
+const expedienteVacunaRRoute = Router();
 
-expedienteVacunaRRouter.get("/", getAllExpedienteVacuna);
-expedienteVacunaRRouter.get("/:id", getExpedienteVacuna);
-expedienteVacunaRRouter.post("/", postExpedienteVacuna);
-expedienteVacunaRRouter.put("/:id", putExpedienteVacuna);
-expedienteVacunaRRouter.delete("/:id", deleteExpedienteVacuna);
+expedienteVacunaRRoute.get("/", getAllExpedienteVacuna);
+expedienteVacunaRRoute.get("/:id", getExpedienteVacuna);
+expedienteVacunaRRoute.post("/", postExpedienteVacuna);
+expedienteVacunaRRoute.put("/:id", putExpedienteVacuna);
+expedienteVacunaRRoute.delete("/:id", deleteExpedienteVacuna);
 
-export { expedienteVacunaRRouter };
+export default expedienteVacunaRRoute;

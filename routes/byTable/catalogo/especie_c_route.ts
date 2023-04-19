@@ -7,12 +7,12 @@ import {
   deleteEspecie,
 } from "../../../controllers";
 
-const especieCRouter = Router();
+const especieCRoute = Router();
 
-especieCRouter.get("/", getAllEspecie);
-especieCRouter.get("/:id", getEspecie);
-especieCRouter.post("/", postEspecie);
-especieCRouter.put("/:id", putEspecie);
-especieCRouter.delete("/:id", deleteEspecie);
+especieCRoute.get("/", getAllEspecie);
+especieCRoute.get("/:id", getEspecie);
+especieCRoute.post("/", postEspecie);
+especieCRoute.put("/:id", putEspecie);
+especieCRoute.delete("/:id", deleteEspecie);
 
-export { especieCRouter };
+export default especieCRoute;

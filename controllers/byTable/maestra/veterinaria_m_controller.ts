@@ -1,59 +1,100 @@
 import type { Request, Response } from "express";
-
 import type { IVeterinariaM } from "../../../@types/interfaces";
-
 import mVeterinaria from "../../../models/maestra/veterinaria_m_model";
-import {
-  handleDeleteRequest,
-  handleErrorHttp,
-  handleGetAllRequest,
-  handleGetRequest,
-  handlePostAllRequest,
-  handlePutRequest,
-} from "../../../util";
+import { handleErrorHttp } from "../../../util";
 
 const getAllVeterinaria = async (req: Request, res: Response) => {
   try {
-    return handleGetAllRequest(req, res, mVeterinaria);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const [total, veterinaria] = await Promise.all([
+      mVeterinaria.count(),
+      mVeterinaria.findAll(),
+    ]);
+
+    return res.status(200).json({
+      total,
+      veterinaria,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const getVeterinaria = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleGetRequest(req, res, mVeterinaria);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const veterinaria = await mVeterinaria.findByPk(id);
+    if (!veterinaria) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    return res.status(200).json({
+      veterinaria,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const postVeterinaria = async (req: Request, res: Response) => {
+  const response = req.body as IVeterinariaM | IVeterinariaM[];
   try {
-    return handlePostAllRequest(
-      req,
-      res,
-      mVeterinaria,
-      req.body as IVeterinariaM[]
-    );
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    if (Array.isArray(response)) {
+      const veterinaria = await mVeterinaria.bulkCreate(response);
+      return res.status(200).json({
+        veterinaria,
+      });
+    } else {
+      const veterinaria = await mVeterinaria.create(response);
+      return res.status(200).json({
+        veterinaria,
+      });
+    }
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const putVeterinaria = async (req: Request, res: Response) => {
+  const response = req.body as IVeterinariaM;
+  const { id } = req.params;
+
   try {
-    return handlePutRequest(req, res, mVeterinaria);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const veterinaria = await mVeterinaria.findByPk(id);
+    if (!veterinaria) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await veterinaria.update(response);
+    return res.status(200).json({
+      veterinaria,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const deleteVeterinaria = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleDeleteRequest(req, res, mVeterinaria);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const veterinaria = await mVeterinaria.findByPk(id);
+    if (!veterinaria) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await veterinaria.destroy();
+    return res.status(200).json({
+      veterinaria,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 

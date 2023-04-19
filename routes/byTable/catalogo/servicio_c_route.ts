@@ -7,12 +7,12 @@ import {
   deleteServicio,
 } from "../../../controllers";
 
-const servicioCRouter = Router();
+const servicioCRoute = Router();
 
-servicioCRouter.get("/", getAllServicio);
-servicioCRouter.get("/:id", getServicio);
-servicioCRouter.post("/", postServicio);
-servicioCRouter.put("/:id", putServicio);
-servicioCRouter.delete("/:id", deleteServicio);
+servicioCRoute.get("/", getAllServicio);
+servicioCRoute.get("/:id", getServicio);
+servicioCRoute.post("/", postServicio);
+servicioCRoute.put("/:id", putServicio);
+servicioCRoute.delete("/:id", deleteServicio);
 
-export { servicioCRouter };
+export default servicioCRoute;

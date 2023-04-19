@@ -15,4 +15,4 @@ mascotaMRoute.post("/", postMascota);
 mascotaMRoute.put("/:id", putMascota);
 mascotaMRoute.delete("/:id", deleteMascota);
 
-export { mascotaMRoute };
+export default mascotaMRoute;

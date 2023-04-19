@@ -15,4 +15,4 @@ expedienteMRoute.post("/", postExpediente);
 expedienteMRoute.put("/:id", putExpediente);
 expedienteMRoute.delete("/:id", deleteExpediente);
 
-export { expedienteMRoute };
+export default expedienteMRoute;

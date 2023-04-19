@@ -1,44 +1,42 @@
+import cors from "cors";
+import dbConnection from "../database/connection";
+import dotenv from "dotenv";
 import express from "express";
 import type { Application } from "express";
-import dotenv from "dotenv";
-import cors from "cors";
 
-import {
-  // authRoute,
-  vacunaCRouter,
-  estadoExpedienteCRouter,
-  categoriaCRouter,
-  expedienteEnfermedadRRouter,
-  clienteDRouter,
-  expedienteVacunaRRouter,
-  productoVentaMRoute,
-  animalProductoCRoute,
-  duenoVeterinariaDRoute,
-  enfermedadCRouter,
-  especieCRouter,
-  expedienteMRoute,
-  fisiologiasMRoute,
-  gastoFijoMRoute,
-  loteMRoute,
-  periodoDRoute,
-  personalVeterinariaDRoute,
-  rolCRouter,
-  marcaCRouter,
-  productoMRoute,
-  mascotaMRoute,
-  servicioCRouter,
-  sexoCRouter,
-  proveedorCRouter,
-  razaCRouter,
-  usuarioMRoute,
-  ventaDRoute,
-  veterinariaMRoute,
-  colorCRouter,
-} from "../routes";
-
-import dbConnection from "../database/connection";
+import animalProductoCRoute from "../routes/byTable/catalogo/animal_producto_c_route";
+import categoriaCRoute from "../routes/byTable/catalogo/categoria_c_route";
+import clienteDRoute from "../routes/byTable/detalle/cliente_d_route";
+import colorCRoute from "../routes/byTable/catalogo/color_c_route";
+import duenoVeterinariaDRoute from "../routes/byTable/detalle/dueno_veterinaria_d_route";
+import enfermedadCRoute from "../routes/byTable/catalogo/enfermedad_c_route";
+import estadoExpedienteCRouter from "../routes/byTable/catalogo/estado_expediente_c_route";
+import especieCRoute from "../routes/byTable/catalogo/especie_c_route";
+import expedienteEnfermedadRRoute from "../routes/byTable/relacional/expediente_enfermedad_r_route";
+import expedienteMRoute from "../routes/byTable/maestra/expediente_m_route";
+import expedienteVacunaRRoute from "../routes/byTable/relacional/expediente_vacuna_r_route";
+import fisiologiasMRoute from "../routes/byTable/maestra/fisiologias_m_route";
+import gastoFijoMRoute from "../routes/byTable/maestra/gasto_fijo_m_route";
+import loteMRoute from "../routes/byTable/maestra/lote_m_route";
+import marcaCRoute from "../routes/byTable/catalogo/marca_c_route";
+import mascotaMRoute from "../routes/byTable/maestra/mascota_m_route";
+import periodoDRoute from "../routes/byTable/detalle/pedido_d_route";
+import personalVeterinariaDRoute from "../routes/byTable/detalle/personal_veterinaria_d_route";
+import productoMRoute from "../routes/byTable/maestra/producto_m_route";
+import productoVentaMRoute from "../routes/byTable/maestra/producto_venta_m_route";
+import proveedorCRoute from "../routes/byTable/catalogo/proveedor_c_route";
+import razaCRoute from "../routes/byTable/catalogo/raza_c_route";
+import rolCRoute from "../routes/byTable/catalogo/rol_c_route";
+import servicioCRoute from "../routes/byTable/catalogo/servicio_c_route";
+import sexoCRoute from "../routes/byTable/catalogo/sexo_c_route";
+import tokenRouter from "../routes/tokenRouter";
+import usuarioMRoute from "../routes/byTable/maestra/usuario_m_route";
+import vacunaCRoute from "../routes/byTable/catalogo/vacuna_c_route";
+import ventaDRoute from "../routes/byTable/detalle/venta_d_route";
+import veterinariaMRoute from "../routes/byTable/maestra/veterinaria_m_route";
 
 dotenv.config();
+
 interface StartServerProps {
   initServer: () => Promise<void>;
 }
@@ -46,7 +44,9 @@ interface StartServerProps {
 const apiPrefix = "/api/v1";
 
 const apiPaths = {
-  // auth: `${apiPrefix}/auth`,
+  token: `${apiPrefix}/token`,
+
+  // ByTable
   byTable: {
     catalogo: {
       animalProductoC: `${apiPrefix}/catalogo/animalProductoC`,
@@ -108,26 +108,27 @@ const startServer: () => StartServerProps = () => {
   };
 
   const routes = (): void => {
-    // app.use(apiPaths.auth, authRoute);
-    //   Catalogo
+    app.use(apiPaths.token, tokenRouter);
+
+    // ByTable
     app.use(apiPaths.byTable.catalogo.animalProductoC, animalProductoCRoute);
-    app.use(apiPaths.byTable.catalogo.categoriaC, categoriaCRouter);
-    app.use(apiPaths.byTable.catalogo.colorC, colorCRouter);
-    app.use(apiPaths.byTable.catalogo.enfermedadC, enfermedadCRouter);
-    app.use(apiPaths.byTable.catalogo.especieC, especieCRouter);
+    app.use(apiPaths.byTable.catalogo.categoriaC, categoriaCRoute);
+    app.use(apiPaths.byTable.catalogo.colorC, colorCRoute);
+    app.use(apiPaths.byTable.catalogo.enfermedadC, enfermedadCRoute);
+    app.use(apiPaths.byTable.catalogo.especieC, especieCRoute);
     app.use(
       apiPaths.byTable.catalogo.estadoExpedienteC,
       estadoExpedienteCRouter
     );
-    app.use(apiPaths.byTable.catalogo.marcaC, marcaCRouter);
-    app.use(apiPaths.byTable.catalogo.proveedorC, proveedorCRouter);
-    app.use(apiPaths.byTable.catalogo.razaC, razaCRouter);
-    app.use(apiPaths.byTable.catalogo.rolC, rolCRouter);
-    app.use(apiPaths.byTable.catalogo.servicioC, servicioCRouter);
-    app.use(apiPaths.byTable.catalogo.sexoC, sexoCRouter);
-    app.use(apiPaths.byTable.catalogo.vacunaC, vacunaCRouter);
-    //   Detalle
-    app.use(apiPaths.byTable.detalle.clienteD, clienteDRouter);
+    app.use(apiPaths.byTable.catalogo.marcaC, marcaCRoute);
+    app.use(apiPaths.byTable.catalogo.proveedorC, proveedorCRoute);
+    app.use(apiPaths.byTable.catalogo.razaC, razaCRoute);
+    app.use(apiPaths.byTable.catalogo.rolC, rolCRoute);
+    app.use(apiPaths.byTable.catalogo.servicioC, servicioCRoute);
+    app.use(apiPaths.byTable.catalogo.sexoC, sexoCRoute);
+    app.use(apiPaths.byTable.catalogo.vacunaC, vacunaCRoute);
+
+    app.use(apiPaths.byTable.detalle.clienteD, clienteDRoute);
     app.use(apiPaths.byTable.detalle.duenoVeterinariaD, duenoVeterinariaDRoute);
     app.use(apiPaths.byTable.detalle.periodoD, periodoDRoute);
     app.use(
@@ -135,7 +136,6 @@ const startServer: () => StartServerProps = () => {
       personalVeterinariaDRoute
     );
     app.use(apiPaths.byTable.detalle.ventaD, ventaDRoute);
-    //   Maestra
     app.use(apiPaths.byTable.maestra.expedienteM, expedienteMRoute);
     app.use(apiPaths.byTable.maestra.fisiogiasM, fisiologiasMRoute);
     app.use(apiPaths.byTable.maestra.gastoFijoM, gastoFijoMRoute);
@@ -145,14 +145,14 @@ const startServer: () => StartServerProps = () => {
     app.use(apiPaths.byTable.maestra.productoVentaM, productoVentaMRoute);
     app.use(apiPaths.byTable.maestra.usuarioM, usuarioMRoute);
     app.use(apiPaths.byTable.maestra.veterinariaM, veterinariaMRoute);
-    //   Relacional
+
     app.use(
       apiPaths.byTable.relacional.expedienteEnfermedadR,
-      expedienteEnfermedadRRouter
+      expedienteEnfermedadRRoute
     );
     app.use(
       apiPaths.byTable.relacional.expedienteVacunaR,
-      expedienteVacunaRRouter
+      expedienteVacunaRRoute
     );
   };
 

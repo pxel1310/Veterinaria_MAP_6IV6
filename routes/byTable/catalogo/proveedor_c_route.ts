@@ -7,12 +7,12 @@ import {
   deleteProveedor,
 } from "../../../controllers";
 
-const proveedorCRouter = Router();
+const proveedorCRoute = Router();
 
-proveedorCRouter.get("/", getAllProveedor);
-proveedorCRouter.get("/:id", getProveedor);
-proveedorCRouter.post("/", postProveedor);
-proveedorCRouter.put("/:id", putProveedor);
-proveedorCRouter.delete("/:id", deleteProveedor);
+proveedorCRoute.get("/", getAllProveedor);
+proveedorCRoute.get("/:id", getProveedor);
+proveedorCRoute.post("/", postProveedor);
+proveedorCRoute.put("/:id", putProveedor);
+proveedorCRoute.delete("/:id", deleteProveedor);
 
-export { proveedorCRouter };
+export default proveedorCRoute;

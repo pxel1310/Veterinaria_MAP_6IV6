@@ -14,4 +14,4 @@ usuarioMRoute.post("/", postUsuario);
 usuarioMRoute.put("/:id", putUsuario);
 usuarioMRoute.delete("/:id", deleteUsuario);
 
-export { usuarioMRoute };
+export default usuarioMRoute;

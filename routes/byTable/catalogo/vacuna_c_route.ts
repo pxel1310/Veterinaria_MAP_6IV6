@@ -7,12 +7,12 @@ import {
   deleteVacuna,
 } from "../../../controllers";
 
-const vacunaCRouter = Router();
+const vacunaCRoute = Router();
 
-vacunaCRouter.get("/", getAllVacuna);
-vacunaCRouter.get("/:id", getVacuna);
-vacunaCRouter.post("/", postVacuna);
-vacunaCRouter.put("/:id", putVacuna);
-vacunaCRouter.delete("/:id", deleteVacuna);
+vacunaCRoute.get("/", getAllVacuna);
+vacunaCRoute.get("/:id", getVacuna);
+vacunaCRoute.post("/", postVacuna);
+vacunaCRoute.put("/:id", putVacuna);
+vacunaCRoute.delete("/:id", deleteVacuna);
 
-export { vacunaCRouter };
+export default vacunaCRoute;

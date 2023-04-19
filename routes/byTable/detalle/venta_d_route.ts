@@ -15,4 +15,4 @@ ventaDRoute.post("/", postVenta);
 ventaDRoute.put("/:id", putVenta);
 ventaDRoute.delete("/:id", deleteVenta);
 
-export { ventaDRoute };
+export default ventaDRoute;

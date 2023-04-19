@@ -1,59 +1,100 @@
 import type { Request, Response } from "express";
-
 import type { IExpedienteM } from "../../../@types/interfaces";
-
 import mExpediente from "../../../models/maestra/expediente_m_model";
-import {
-  handleDeleteRequest,
-  handleErrorHttp,
-  handleGetAllRequest,
-  handleGetRequest,
-  handlePostAllRequest,
-  handlePutRequest,
-} from "../../../util";
+import { handleErrorHttp } from "../../../util";
 
 const getAllExpediente = async (req: Request, res: Response) => {
   try {
-    return handleGetAllRequest(req, res, mExpediente);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const [total, expediente] = await Promise.all([
+      mExpediente.count(),
+      mExpediente.findAll(),
+    ]);
+
+    return res.status(200).json({
+      total,
+      expediente,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const getExpediente = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleGetRequest(req, res, mExpediente);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const expediente = await mExpediente.findByPk(id);
+    if (!expediente) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    return res.status(200).json({
+      expediente,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const postExpediente = async (req: Request, res: Response) => {
+  const response = req.body as IExpedienteM | IExpedienteM[];
   try {
-    return handlePostAllRequest(
-      req,
-      res,
-      mExpediente,
-      req.body as IExpedienteM[]
-    );
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    if (Array.isArray(response)) {
+      const expediente = await mExpediente.bulkCreate(response);
+      return res.status(200).json({
+        expediente,
+      });
+    } else {
+      const expediente = await mExpediente.create(response);
+      return res.status(200).json({
+        expediente,
+      });
+    }
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const putExpediente = async (req: Request, res: Response) => {
+  const response = req.body as IExpedienteM;
+  const { id } = req.params;
+
   try {
-    return handlePutRequest(req, res, mExpediente);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const expediente = await mExpediente.findByPk(id);
+    if (!expediente) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await expediente.update(response);
+    return res.status(200).json({
+      expediente,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const deleteExpediente = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleDeleteRequest(req, res, mExpediente);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const expediente = await mExpediente.findByPk(id);
+    if (!expediente) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await expediente.destroy();
+    return res.status(200).json({
+      expediente,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 

@@ -1,10 +1,8 @@
-import { Response } from "express";
+import { Response, Request } from "express";
 
-type handleError = (error: unknown, res: Response, msg?: string) => Response;
-
-export const handleErrorHttp: handleError = (error, res, msg) => {
+export const handleErrorHttp = (req: Request, res: Response, error: any) => {
   console.log(error);
   return res.status(500).json({
-    msg: msg ?? "Error inesperado",
+    msg: "Error inesperado",
   });
 };

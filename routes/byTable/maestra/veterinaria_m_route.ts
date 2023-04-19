@@ -15,4 +15,4 @@ veterinariaMRoute.post("/", postVeterinaria);
 veterinariaMRoute.put("/:id", putVeterinaria);
 veterinariaMRoute.delete("/:id", deleteVeterinaria);
 
-export { veterinariaMRoute };
+export default veterinariaMRoute;

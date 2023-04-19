@@ -14,4 +14,4 @@ personalVeterinariaDRoute.post("/", postPersonalVeterinaria);
 personalVeterinariaDRoute.put("/:id", putPersonalVeterinaria);
 personalVeterinariaDRoute.delete("/:id", deletePersonalVeterinaria);
 
-export { personalVeterinariaDRoute };
+export default personalVeterinariaDRoute;

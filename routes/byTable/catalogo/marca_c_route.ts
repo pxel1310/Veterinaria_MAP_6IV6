@@ -7,12 +7,12 @@ import {
   deleteMarca,
 } from "../../../controllers";
 
-const marcaCRouter = Router();
+const marcaCRoute = Router();
 
-marcaCRouter.get("/", getAllMarca);
-marcaCRouter.get("/:id", getMarca);
-marcaCRouter.post("/", postMarca);
-marcaCRouter.put("/:id", putMarca);
-marcaCRouter.delete("/:id", deleteMarca);
+marcaCRoute.get("/", getAllMarca);
+marcaCRoute.get("/:id", getMarca);
+marcaCRoute.post("/", postMarca);
+marcaCRoute.put("/:id", putMarca);
+marcaCRoute.delete("/:id", deleteMarca);
 
-export { marcaCRouter };
+export default marcaCRoute;

@@ -7,12 +7,12 @@ import {
   deleteCategoria,
 } from "../../../controllers";
 
-const categoriaCRouter = Router();
+const categoriaCRoute = Router();
 
-categoriaCRouter.get("/", getAllCategoria);
-categoriaCRouter.get("/:id", getCategoria);
-categoriaCRouter.post("/", postCategoria);
-categoriaCRouter.put("/:id", putCategoria);
-categoriaCRouter.delete("/:id", deleteCategoria);
+categoriaCRoute.get("/", getAllCategoria);
+categoriaCRoute.get("/:id", getCategoria);
+categoriaCRoute.post("/", postCategoria);
+categoriaCRoute.put("/:id", putCategoria);
+categoriaCRoute.delete("/:id", deleteCategoria);
 
-export { categoriaCRouter };
+export default categoriaCRoute;

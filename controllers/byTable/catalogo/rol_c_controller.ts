@@ -1,54 +1,97 @@
 import type { Request, Response } from "express";
-
 import type { IRolC } from "../../../@types/interfaces";
-
 import cRol from "../../../models/catalogo/rol_c_model";
-import {
-  handleDeleteRequest,
-  handleErrorHttp,
-  handleGetAllRequest,
-  handleGetRequest,
-  handlePostAllRequest,
-  handlePutRequest,
-} from "../../../util";
+import { handleErrorHttp } from "../../../util";
 
 const getAllRol = async (req: Request, res: Response) => {
   try {
-    return handleGetAllRequest(req, res, cRol);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const [total, rol] = await Promise.all([cRol.count(), cRol.findAll()]);
+
+    return res.status(200).json({
+      total,
+      rol,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const getRol = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleGetRequest(req, res, cRol);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const rol = await cRol.findByPk(id);
+    if (!rol) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    return res.status(200).json({
+      rol,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const postRol = async (req: Request, res: Response) => {
+  const response = req.body as IRolC | IRolC[];
   try {
-    return handlePostAllRequest(req, res, cRol, req.body as IRolC[]);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    if (Array.isArray(response)) {
+      const rol = await cRol.bulkCreate(response);
+      return res.status(200).json({
+        rol,
+      });
+    } else {
+      const rol = await cRol.create(response);
+      return res.status(200).json({
+        rol,
+      });
+    }
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const putRol = async (req: Request, res: Response) => {
+  const response = req.body as IRolC;
+  const { id } = req.params;
+
   try {
-    return handlePutRequest(req, res, cRol);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const rol = await cRol.findByPk(id);
+    if (!rol) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await rol.update(response);
+    return res.status(200).json({
+      rol,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 
 const deleteRol = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
   try {
-    return handleDeleteRequest(req, res, cRol);
-  } catch (error) {
-    return handleErrorHttp(error, res);
+    const rol = await cRol.findByPk(id);
+    if (!rol) {
+      return res.status(404).json({
+        msg: "No existe el registro",
+      });
+    }
+
+    await rol.destroy();
+    return res.status(200).json({
+      rol,
+    });
+  } catch (e) {
+    return handleErrorHttp(req, res, e);
   }
 };
 

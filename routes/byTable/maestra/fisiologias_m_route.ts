@@ -1,18 +1,18 @@
 import { Router } from "express";
 import {
-  getFisiologias,
-  getAllFisiologias,
-  postFisiologias,
-  putFisiologias,
-  deleteFisiologias,
+  getFisiologia,
+  getAllFisiologia,
+  postFisiologia,
+  putFisiologia,
+  deleteFisiologia,
 } from "../../../controllers";
 
 const fisiologiasMRoute = Router();
 
-fisiologiasMRoute.get("/", getAllFisiologias);
-fisiologiasMRoute.get("/:id", getFisiologias);
-fisiologiasMRoute.post("/", postFisiologias);
-fisiologiasMRoute.put("/:id", putFisiologias);
-fisiologiasMRoute.delete("/:id", deleteFisiologias);
+fisiologiasMRoute.get("/", getAllFisiologia);
+fisiologiasMRoute.get("/:id", getFisiologia);
+fisiologiasMRoute.post("/", postFisiologia);
+fisiologiasMRoute.put("/:id", putFisiologia);
+fisiologiasMRoute.delete("/:id", deleteFisiologia);
 
-export { fisiologiasMRoute };
+export default fisiologiasMRoute;

@@ -8,12 +8,12 @@ import {
   deleteExpedienteEnfermedad,
 } from "../../../controllers";
 
-const expedienteEnfermedadRRouter = Router();
+const expedienteEnfermedadRRoute = Router();
 
-expedienteEnfermedadRRouter.get("/", getAllExpedienteEnfermedad);
-expedienteEnfermedadRRouter.get("/:id", getExpedienteEnfermedad);
-expedienteEnfermedadRRouter.post("/", postExpedienteEnfermedad);
-expedienteEnfermedadRRouter.put("/:id", putExpedienteEnfermedad);
-expedienteEnfermedadRRouter.delete("/:id", deleteExpedienteEnfermedad);
+expedienteEnfermedadRRoute.get("/", getAllExpedienteEnfermedad);
+expedienteEnfermedadRRoute.get("/:id", getExpedienteEnfermedad);
+expedienteEnfermedadRRoute.post("/", postExpedienteEnfermedad);
+expedienteEnfermedadRRoute.put("/:id", putExpedienteEnfermedad);
+expedienteEnfermedadRRoute.delete("/:id", deleteExpedienteEnfermedad);
 
-export { expedienteEnfermedadRRouter };
+export default expedienteEnfermedadRRoute;

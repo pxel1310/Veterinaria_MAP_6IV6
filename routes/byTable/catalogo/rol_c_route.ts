@@ -7,12 +7,12 @@ import {
   deleteRol,
 } from "../../../controllers";
 
-const rolCRouter = Router();
+const rolCRoute = Router();
 
-rolCRouter.get("/", getAllRol);
-rolCRouter.get("/:id", getRol);
-rolCRouter.post("/", postRol);
-rolCRouter.put("/:id", putRol);
-rolCRouter.delete("/:id", deleteRol);
+rolCRoute.get("/", getAllRol);
+rolCRoute.get("/:id", getRol);
+rolCRoute.post("/", postRol);
+rolCRoute.put("/:id", putRol);
+rolCRoute.delete("/:id", deleteRol);
 
-export { rolCRouter };
+export default rolCRoute;

@@ -7,12 +7,12 @@ import {
   deleteSexo,
 } from "../../../controllers";
 
-const sexoCRouter = Router();
+const sexoCRoute = Router();
 
-sexoCRouter.get("/", getAllSexo);
-sexoCRouter.get("/:id", getSexo);
-sexoCRouter.post("/", postSexo);
-sexoCRouter.put("/:id", putSexo);
-sexoCRouter.delete("/:id", deleteSexo);
+sexoCRoute.get("/", getAllSexo);
+sexoCRoute.get("/:id", getSexo);
+sexoCRoute.post("/", postSexo);
+sexoCRoute.put("/:id", putSexo);
+sexoCRoute.delete("/:id", deleteSexo);
 
-export { sexoCRouter };
+export default sexoCRoute;

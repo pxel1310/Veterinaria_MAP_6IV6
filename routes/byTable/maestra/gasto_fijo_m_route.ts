@@ -15,4 +15,4 @@ gastoFijoMRoute.post("/", postGastoFijo);
 gastoFijoMRoute.put("/:id", putGastoFijo);
 gastoFijoMRoute.delete("/:id", deleteGastoFijo);
 
-export { gastoFijoMRoute };
+export default gastoFijoMRoute;

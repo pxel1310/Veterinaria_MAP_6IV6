@@ -7,12 +7,12 @@ import {
   deleteColor,
 } from "../../../controllers";
 
-const colorCRouter = Router();
+const colorCRoute = Router();
 
-colorCRouter.get("/", getAllColor);
-colorCRouter.get("/:id", getColor);
-colorCRouter.post("/", postColor);
-colorCRouter.put("/:id", putColor);
-colorCRouter.delete("/:id", deleteColor);
+colorCRoute.get("/", getAllColor);
+colorCRoute.get("/:id", getColor);
+colorCRoute.post("/", postColor);
+colorCRoute.put("/:id", putColor);
+colorCRoute.delete("/:id", deleteColor);
 
-export { colorCRouter };
+export default colorCRoute;

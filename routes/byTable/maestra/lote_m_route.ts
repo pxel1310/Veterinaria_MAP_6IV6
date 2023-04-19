@@ -15,4 +15,4 @@ loteMRoute.post("/", postLote);
 loteMRoute.put("/:id", putLote);
 loteMRoute.delete("/:id", deleteLote);
 
-export { loteMRoute };
+export default loteMRoute;

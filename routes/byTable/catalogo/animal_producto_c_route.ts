@@ -15,4 +15,4 @@ animalProductoCRoute.post("/", postAnimalProducto);
 animalProductoCRoute.put("/:id", putAnimalProducto);
 animalProductoCRoute.delete("/:id", deleteAnimalProducto);
 
-export { animalProductoCRoute };
+export default animalProductoCRoute;

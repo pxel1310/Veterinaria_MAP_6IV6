@@ -15,4 +15,4 @@ productoVentaMRoute.post("/", postProductoVenta);
 productoVentaMRoute.put("/:id", putProductoVenta);
 productoVentaMRoute.delete("/:id", deleteProductoVenta);
 
-export { productoVentaMRoute };
+export default productoVentaMRoute;

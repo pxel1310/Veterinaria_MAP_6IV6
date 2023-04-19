@@ -7,12 +7,12 @@ import {
   deleteEnfermedad,
 } from "../../../controllers";
 
-const enfermedadCRouter = Router();
+const enfermedadCRoute = Router();
 
-enfermedadCRouter.get("/", getAllEnfermedad);
-enfermedadCRouter.get("/:id", getEnfermedad);
-enfermedadCRouter.post("/", postEnfermedad);
-enfermedadCRouter.put("/:id", putEnfermedad);
-enfermedadCRouter.delete("/:id", deleteEnfermedad);
+enfermedadCRoute.get("/", getAllEnfermedad);
+enfermedadCRoute.get("/:id", getEnfermedad);
+enfermedadCRoute.post("/", postEnfermedad);
+enfermedadCRoute.put("/:id", putEnfermedad);
+enfermedadCRoute.delete("/:id", deleteEnfermedad);
 
-export { enfermedadCRouter };
+export default enfermedadCRoute;

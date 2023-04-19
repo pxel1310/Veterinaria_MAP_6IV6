@@ -15,4 +15,4 @@ periodoDRoute.post("/", postPeriodo);
 periodoDRoute.put("/:id", putPeriodo);
 periodoDRoute.delete("/:id", deletePeriodo);
 
-export { periodoDRoute };
+export default periodoDRoute;

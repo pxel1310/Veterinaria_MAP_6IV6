@@ -1,18 +1,18 @@
 import { Router } from "express";
 import {
   getCliente,
-  getAllClientes,
+  getAllCliente,
   postCliente,
   putCliente,
   deleteCliente,
 } from "../../../controllers";
 
-const clienteDRouter = Router();
+const clienteDRoute = Router();
 
-clienteDRouter.get("/", getAllClientes);
-clienteDRouter.get("/:id", getCliente);
-clienteDRouter.post("/", postCliente);
-clienteDRouter.put("/:id", putCliente);
-clienteDRouter.delete("/:id", deleteCliente);
+clienteDRoute.get("/", getAllCliente);
+clienteDRoute.get("/:id", getCliente);
+clienteDRoute.post("/", postCliente);
+clienteDRoute.put("/:id", putCliente);
+clienteDRoute.delete("/:id", deleteCliente);
 
-export { clienteDRouter };
+export default clienteDRoute;

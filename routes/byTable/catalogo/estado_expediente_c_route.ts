@@ -15,4 +15,4 @@ estadoExpedienteCRouter.post("/", postEstadoExpediente);
 estadoExpedienteCRouter.put("/:id", putEstadoExpediente);
 estadoExpedienteCRouter.delete("/:id", deleteEstadoExpediente);
 
-export { estadoExpedienteCRouter };
+export default estadoExpedienteCRouter;
