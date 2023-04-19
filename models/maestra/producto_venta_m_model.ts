@@ -13,6 +13,7 @@ const mProductoVenta = dbConnection.define<IMProductoVentaM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     cantidad_proven: {
       type: DataTypes.INTEGER,

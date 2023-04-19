@@ -12,6 +12,7 @@ const dVenta = dbConnection.define<IMVentaD>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     fecha_ven: {
       type: DataTypes.DATE,

@@ -12,6 +12,7 @@ const cRaza = dbConnection.define<IMRazaC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_raz: {
       type: DataTypes.STRING(45),

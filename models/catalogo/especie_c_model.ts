@@ -10,6 +10,7 @@ const cEspecie = dbConnection.define<IMEspecieC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_esp: {
       type: DataTypes.STRING(45),

@@ -10,6 +10,7 @@ const cVacuna = dbConnection.define<IMVacunaC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_vac: {
       type: DataTypes.STRING(45),

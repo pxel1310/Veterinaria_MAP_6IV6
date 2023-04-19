@@ -12,6 +12,7 @@ const mUsuario = dbConnection.define<IMUsuarioM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     correo_usu: {
       type: DataTypes.STRING(45),

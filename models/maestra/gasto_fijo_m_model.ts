@@ -13,6 +13,7 @@ const mGastoFijo = dbConnection.define<IMGastoFijoM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     fecha_gasfij: {
       type: DataTypes.DATE,

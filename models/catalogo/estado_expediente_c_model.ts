@@ -10,6 +10,7 @@ const cEstadoExpediente = dbConnection.define<IMEstadoExpedienteC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_estexp: {
       type: DataTypes.STRING(45),

@@ -10,6 +10,7 @@ const cMarca = dbConnection.define<IMMarcaC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_mar: {
       type: DataTypes.STRING(45),

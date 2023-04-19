@@ -10,6 +10,7 @@ const cEnfermedad = dbConnection.define<IMEnfermedadC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_enf: {
       type: DataTypes.STRING(45),

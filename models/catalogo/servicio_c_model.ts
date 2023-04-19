@@ -10,6 +10,7 @@ const cServicio = dbConnection.define<IMServicioC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_ser: {
       type: DataTypes.STRING(100),

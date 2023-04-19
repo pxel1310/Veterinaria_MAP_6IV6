@@ -15,6 +15,7 @@ const mMascota = dbConnection.define<IMMascotaM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     id_cli: {
       type: DataTypes.INTEGER,

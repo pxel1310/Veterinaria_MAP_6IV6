@@ -10,6 +10,7 @@ const cCategoria = dbConnection.define<IMCategoriaC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_cat: {
       type: DataTypes.STRING(45),

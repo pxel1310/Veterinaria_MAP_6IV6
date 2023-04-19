@@ -14,6 +14,7 @@ const mLote = dbConnection.define<IMLoteM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     cantidadProducto_lot: {
       type: DataTypes.INTEGER,

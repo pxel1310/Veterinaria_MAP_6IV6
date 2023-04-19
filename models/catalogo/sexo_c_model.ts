@@ -10,6 +10,7 @@ const cSexo = dbConnection.define<IMSexoC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_sex: {
       type: DataTypes.STRING(45),

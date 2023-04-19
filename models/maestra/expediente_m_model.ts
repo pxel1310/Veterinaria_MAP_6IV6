@@ -13,6 +13,7 @@ const mExpediente = dbConnection.define<IMExpedienteM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     motivo_exp: {
       type: DataTypes.STRING(100),

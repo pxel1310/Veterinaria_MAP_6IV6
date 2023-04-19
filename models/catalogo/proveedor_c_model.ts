@@ -10,6 +10,7 @@ const cProveedor = dbConnection.define<IMProveedorC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_prov: {
       type: DataTypes.STRING(100),

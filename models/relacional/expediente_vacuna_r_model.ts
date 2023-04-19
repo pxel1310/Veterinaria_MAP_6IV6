@@ -13,6 +13,7 @@ const rExpedienteVacuna = dbConnection.define<IMExpedienteVacunaR>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     id_exp: {
       type: DataTypes.INTEGER,

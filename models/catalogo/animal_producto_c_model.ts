@@ -10,6 +10,7 @@ const cAnimalProducto = dbConnection.define<IMAnimalProductoC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_anipro: {
       type: DataTypes.STRING(45),

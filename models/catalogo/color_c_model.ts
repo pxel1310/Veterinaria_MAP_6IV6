@@ -10,6 +10,7 @@ const cColor = dbConnection.define<IMColorC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_col: {
       type: DataTypes.STRING(45),

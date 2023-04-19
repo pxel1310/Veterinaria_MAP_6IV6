@@ -10,6 +10,7 @@ const mVeterinaria = dbConnection.define<IMVeterinariaM>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_vet: {
       type: DataTypes.STRING(100),

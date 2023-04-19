@@ -10,6 +10,7 @@ const cRol = dbConnection.define<IMRolC>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     nombre_rol: {
       type: DataTypes.STRING(45),

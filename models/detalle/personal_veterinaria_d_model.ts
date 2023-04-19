@@ -13,6 +13,7 @@ const dPersonalVeterinaria = dbConnection.define<IMPersonalVeterinariaD>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     id_usu: {
       type: DataTypes.INTEGER,

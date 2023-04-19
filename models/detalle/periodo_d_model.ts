@@ -10,6 +10,7 @@ const dPeriodo = dbConnection.define<IMPeriodoD>(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
     fechaInicio_per: {
       type: DataTypes.DATE,

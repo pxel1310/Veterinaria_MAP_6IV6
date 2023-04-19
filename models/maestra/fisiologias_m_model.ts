@@ -11,7 +11,8 @@ const mFisiologias = dbConnection.define<IMFisiologiasM>(
     id_fis: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      allowNull: false,
+      unique: true,
     },
     pulso_fis: {
       type: DataTypes.FLOAT,
