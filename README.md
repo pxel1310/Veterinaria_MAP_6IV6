@@ -2,6 +2,12 @@
 
 #### _Metodos Agiles 6IV6_
 
+#### URL del proyecto: https://veterinariamap6iv6-production.up.railway.app/
+
+#### URL de la documentación de la API: https://documenter.getpostman.com/view/24752969/2s93Y2R1j5
+
+## Descripción
+
 Este es **Back end** de la aplicación de una veterinaria, en la cual se puede registrar a los clientes, mascotas y citas, además de poder ver las citas que tiene un cliente y las citas que tiene una mascota.
 
 ## Requisitos previos
@@ -44,7 +50,7 @@ Este es **Back end** de la aplicación de una veterinaria, en la cual se puede re
 
 ## API
 
-Documentación de la API del backend, incluyendo las rutas y parámetros de entrada y 
+Documentación de la API del backend, incluyendo las rutas y parámetros de entrada y
 salida, la encontrarás en el siguiente enlace: [API REST](https://documenter.getpostman.com/view/24868281/2s93Jox5cZ)
 
 ## Contribución

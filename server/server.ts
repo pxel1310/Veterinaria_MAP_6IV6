@@ -43,10 +43,10 @@ interface StartServerProps {
   initServer: () => Promise<void>;
 }
 
-const apiPrefix = "/api";
+const apiPrefix = "/api/v1";
 
 const apiPaths = {
-  auth: `${apiPrefix}/auth`,
+  // auth: `${apiPrefix}/auth`,
   byTable: {
     catalogo: {
       animalProductoC: `${apiPrefix}/catalogo/animalProductoC`,
@@ -96,7 +96,7 @@ const startServer: () => StartServerProps = () => {
     await dbConnection.authenticate();
 
     await dbConnection
-      .sync({ force: true })
+      .sync({ force: false })
       .then(() => console.log("Base de datos conectada"))
       .catch(console.error);
   };
