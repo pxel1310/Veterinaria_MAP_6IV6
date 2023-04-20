@@ -37,6 +37,7 @@ const getSexo = async (req: Request, res: Response) => {
 
 const postSexo = async (req: Request, res: Response) => {
   const response = req.body as ISexoC | ISexoC[];
+  console.table(response);
   try {
     if (Array.isArray(response)) {
       const sexo = await cSexo.bulkCreate(response);
