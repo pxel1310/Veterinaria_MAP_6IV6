@@ -1,4 +1,4 @@
-# Veterinaria Back End
+# Veterinaria Back End - REST API
 
 #### _Metodos Agiles 6IV6_
 
@@ -39,7 +39,7 @@ Este es **Back end** de la aplicación de una veterinaria, en la cual se puede re
 
 - Clonar el repositorio.
 - Navegar hasta el directorio del proyecto.
-- Duplicar .env.example y renombrar la copia a .env.
+- Duplicar .env.example y renombrar la copia a .env.development. y a .env.production, dependiendo el modo en el que se quiera ejecutar el servidor.
 - Configurar las variables de entorno en el archivo .env.
 - Ejecutar `npm install` para instalar las dependencias.
 - Ejecutar `npm dev` para iniciar el servidor en modo desarrollo.
@@ -54,7 +54,3 @@ salida, la encontrarás en el siguiente enlace: [API REST](https://documenter.get
 ## Contribución
 
 Unicamente se aceptan contribuciones de los miembros del grupo 6IV6, CECyT 9.
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT.
