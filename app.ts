@@ -1,8 +1,8 @@
-import Server from "./server/server";
+import Server from './src/server'
 
-const server = Server();
+const server = Server()
 
 server
   .initServer()
-  .then(() => console.log("Servidor 'Veterinaria' en linea 👍"))
-  .catch(console.error);
+  .then(() => console.log(`Modo de ejecución: ${process.env.NODE_ENV}`))
+  .catch(console.error)

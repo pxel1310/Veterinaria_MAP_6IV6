@@ -3,7 +3,5 @@ dist/
 db/
 .idea/
 
-.env
-
-.dockerignore
-docker-compose.yaml
+.env.development
+.env.production
