@@ -1,17 +1,17 @@
 [
-   {
-      "nombre_c_esp":"Gato"
-   },
-   {
-      "nombre_c_esp":"Perro"
-   },
-   {
-      "nombre_c_esp":"Conejo"
-   },
-   {
-      "nombre_c_esp":"Hurones"
-   },
-   {
-      "nombre_c_esp":"Cerdos mini"
-   }
+  {
+    "nombre_c_esp": "Gato"
+  },
+  {
+    "nombre_c_esp": "Perro"
+  },
+  {
+    "nombre_c_esp": "Conejo"
+  },
+  {
+    "nombre_c_esp": "Hurones"
+  },
+  {
+    "nombre_c_esp": "Cerdos mini"
+  }
 ]

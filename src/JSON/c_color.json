@@ -1,65 +1,65 @@
 [
-   {
-      "nombre_c_col":"Negro"
-   },
-   {
-      "nombre_c_col":"Blanco"
-   },
-   {
-      "nombre_c_col":"Marrón-Café"
-   },
-   {
-      "nombre_c_col":"Gris"
-   },
-   {
-      "nombre_c_col":"Rubio-Dorado"
-   },
-   {
-      "nombre_c_col":"Atigrado-Rayado"
-   },
-   {
-      "nombre_c_col":"Rojo-Naranja"
-   },
-   {
-      "nombre_c_col":"Canela-Canela_oscuro"
-   },
-   {
-      "nombre_c_col":"Azul"
-   },
-   {
-      "nombre_c_col":"Plateado"
-   },
-   {
-      "nombre_c_col":"Tricolor-blanco_negro_y_naranja_rosa"
-   },
-   {
-      "nombre_c_col":"Pálido-Pastel"
-   },
-   {
-      "nombre_c_col":"Pardo-Beige"
-   },
-   {
-      "nombre_c_col":"Calico-blanco_negro_y_naranja"
-   },
-   {
-      "nombre_c_col":"Blanco_y_negro"
-   },
-   {
-      "nombre_c_col":"Blanco_y_marrón"
-   },
-   {
-      "nombre_c_col":"Leopardo-Manchado"
-   },
-   {
-      "nombre_c_col":"Marrón_oscuro-Chocolate"
-   },
-   {
-      "nombre_c_col":"Rubio_oscuro-Miel"
-   },
-   {
-      "nombre_c_col":"Blanco_y_gris"
-   },
-   {
-      "nombre_c_col":"Rosa-Rosado"
-   }
+  {
+    "nombre_c_col": "Negro"
+  },
+  {
+    "nombre_c_col": "Blanco"
+  },
+  {
+    "nombre_c_col": "Marrón-Café"
+  },
+  {
+    "nombre_c_col": "Gris"
+  },
+  {
+    "nombre_c_col": "Rubio-Dorado"
+  },
+  {
+    "nombre_c_col": "Atigrado-Rayado"
+  },
+  {
+    "nombre_c_col": "Rojo-Naranja"
+  },
+  {
+    "nombre_c_col": "Canela-Canela_oscuro"
+  },
+  {
+    "nombre_c_col": "Azul"
+  },
+  {
+    "nombre_c_col": "Plateado"
+  },
+  {
+    "nombre_c_col": "Tricolor-blanco_negro_y_naranja_rosa"
+  },
+  {
+    "nombre_c_col": "Pálido-Pastel"
+  },
+  {
+    "nombre_c_col": "Pardo-Beige"
+  },
+  {
+    "nombre_c_col": "Calico-blanco_negro_y_naranja"
+  },
+  {
+    "nombre_c_col": "Blanco_y_negro"
+  },
+  {
+    "nombre_c_col": "Blanco_y_marrón"
+  },
+  {
+    "nombre_c_col": "Leopardo-Manchado"
+  },
+  {
+    "nombre_c_col": "Marrón_oscuro-Chocolate"
+  },
+  {
+    "nombre_c_col": "Rubio_oscuro-Miel"
+  },
+  {
+    "nombre_c_col": "Blanco_y_gris"
+  },
+  {
+    "nombre_c_col": "Rosa-Rosado"
+  }
 ]

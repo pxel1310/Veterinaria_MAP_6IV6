@@ -1,34 +1,34 @@
 [
-   {
-      "nombre_c_espcon":"Fijo",
-      "id_c_con":1
-   },
-   {
-      "nombre_c_espcon":"Fijo",
-      "id_c_con":2
-   },
-   {
-      "nombre_c_espcon":"Variable",
-      "id_c_con":1
-   },
-   {
-      "nombre_c_espcon":"Variable",
-      "id_c_con":2
-   },
-   {
-      "nombre_c_espcon":"Cuentas por Cobrar",
-      "id_c_con":1
-   },
-   {
-      "nombre_c_espcon":"Cuentas por Cobrar",
-      "id_c_con":2
-   },
-   {
-      "nombre_c_espcon":"Cuentas por Pagar",
-      "id_c_con":1
-   },
-   {
-      "nombre_c_espcon":"Cuentas por Pagar",
-      "id_c_con":2
-   }
+  {
+    "nombre_c_espcon": "Fijo",
+    "id_c_con": 1
+  },
+  {
+    "nombre_c_espcon": "Fijo",
+    "id_c_con": 2
+  },
+  {
+    "nombre_c_espcon": "Variable",
+    "id_c_con": 1
+  },
+  {
+    "nombre_c_espcon": "Variable",
+    "id_c_con": 2
+  },
+  {
+    "nombre_c_espcon": "Cuentas por Cobrar",
+    "id_c_con": 1
+  },
+  {
+    "nombre_c_espcon": "Cuentas por Cobrar",
+    "id_c_con": 2
+  },
+  {
+    "nombre_c_espcon": "Cuentas por Pagar",
+    "id_c_con": 1
+  },
+  {
+    "nombre_c_espcon": "Cuentas por Pagar",
+    "id_c_con": 2
+  }
 ]

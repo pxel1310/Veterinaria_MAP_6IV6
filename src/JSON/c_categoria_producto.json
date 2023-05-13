@@ -1,26 +1,26 @@
 [
-   {
-      "nombre_c_catpro":"Alimento seco",
-      "descripcion_c_catpro":" es más fácil de conservar"
-   },
-   {
-      "nombre_c_catpro":"Alimento húmedo",
-      "descripcion_c_catpro":"Aquella que su composición tiene agua"
-   },
-   {
-      "nombre_c_catpro":"Accesorios",
-      "descripcion_c_catpro":"Para que la mascota se vea bonita"
-   },
-   {
-      "nombre_c_catpro":"Premios",
-      "descripcion_c_catpro":"Características del reforzamiento positivo al entrenar"
-   },
-   {
-      "nombre_c_catpro":"Salud y bienestar",
-      "descripcion_c_catpro":"Funcionamiento adecuado del organismo, estado emocional"
-   },
-   {
-      "nombre_c_catpro":"Arena y limpieza",
-      "descripcion_c_catpro":"Permite que las heces se compacten"
-   }
+  {
+    "nombre_c_catpro": "Alimento seco",
+    "descripcion_c_catpro": " es más fácil de conservar"
+  },
+  {
+    "nombre_c_catpro": "Alimento húmedo",
+    "descripcion_c_catpro": "Aquella que su composición tiene agua"
+  },
+  {
+    "nombre_c_catpro": "Accesorios",
+    "descripcion_c_catpro": "Para que la mascota se vea bonita"
+  },
+  {
+    "nombre_c_catpro": "Premios",
+    "descripcion_c_catpro": "Características del reforzamiento positivo al entrenar"
+  },
+  {
+    "nombre_c_catpro": "Salud y bienestar",
+    "descripcion_c_catpro": "Funcionamiento adecuado del organismo, estado emocional"
+  },
+  {
+    "nombre_c_catpro": "Arena y limpieza",
+    "descripcion_c_catpro": "Permite que las heces se compacten"
+  }
 ]
