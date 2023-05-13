@@ -4,16 +4,14 @@ services:
   vet-db:
     image: mysql:8.0.33
     restart: always
-    env_file:
-      - .env.development
     environment:
-      MYSQL_DATABASE: '${MYSQL_DATABASE}'
-      MYSQL_ROOT_PASSWORD: '${MYSQL_PASSWORD}'
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - '3306:3306'
     volumes:
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
-  db:
-    driver: local
+    db:
+      driver: local
